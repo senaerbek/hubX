@@ -1,20 +1,20 @@
 import React from 'react';
 import {memo} from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {MainNavigator} from './main-navigator';
+import {OnBoardingStackNavigator} from './onboarding-navigator';
 
 const Stack = createStackNavigator();
 
 export const AppNavigator = memo(function ApplicationNavigator() {
   return (
-    <SafeAreaView
+    <View
       style={{
         flex: 1,
       }}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Main" component={MainNavigator} />
+        <Stack.Screen name="Main" component={OnBoardingStackNavigator} />
       </Stack.Navigator>
-    </SafeAreaView>
+    </View>
   );
 });
