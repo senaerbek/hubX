@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {RoundPixel} from '../../utils/dimension';
+import {constants} from '../../utils/theme';
 
 export const styles = StyleSheet.create({
   container: {
@@ -17,19 +18,19 @@ export const styles = StyleSheet.create({
     height: RoundPixel(25),
   },
   tabIconFocused: {
-    tintColor: '#28AF6E',
+    tintColor: constants.colors.mainColor,
   },
   tabIconUnfocused: {
-    tintColor: '#BDBDBD',
+    tintColor: constants.colors.lightGrayColor,
   },
   label: {
     fontSize: RoundPixel(10),
   },
   labelFocused: {
-    color: '#28AF6E',
+    color: constants.colors.mainColor,
   },
   labelUnfocused: {
-    color: '#979798',
+    color: constants.colors.grayColor,
   },
   scanIcon: {
     tintColor: '#fff',
@@ -39,7 +40,7 @@ export const styles = StyleSheet.create({
   scanButton: {
     height: RoundPixel(60),
     width: RoundPixel(60),
-    backgroundColor: '#28AF6E',
+    backgroundColor: constants.colors.mainColor,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
@@ -49,7 +50,7 @@ export const styles = StyleSheet.create({
     width: RoundPixel(64),
     position: 'absolute',
     top: RoundPixel(-16),
-    backgroundColor: '#5effb4',
+    backgroundColor: '#2CCC80',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 50,

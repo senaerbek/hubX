@@ -4,7 +4,6 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 import {memo} from 'react';
-import {Image} from 'react-native';
 import {HomeScreen} from '../screens/HomeScreen';
 import {DiagnoseScreen} from '../screens/DiagnoseScreen';
 import {MyGardenScreen} from '../screens/MyGardenScreen';
