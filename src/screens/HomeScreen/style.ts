@@ -25,4 +25,13 @@ export const styles = StyleSheet.create({
     marginTop: RoundPixel(6),
     color: constants.colors.mainTextColor,
   },
+  contentBody: {
+    paddingHorizontal: RoundPixel(24),
+  },
+  questionList: {
+    flexGrow: 0,
+  },
+  listItemContainer: {
+    marginRight: RoundPixel(10),
+  },
 });

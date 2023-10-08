@@ -6,6 +6,7 @@ import {TextInputComponent} from '../../componenets/TextInputComponent';
 import {useDispatch, useSelector} from 'react-redux';
 import {getQuestions} from '../../api/services/question-service';
 import {AppDispatch, RootState} from '../../store';
+import {QuestionCardComponent} from './QuestionCardComponent';
 
 export function HomeScreen() {
   const dispatch = useDispatch<AppDispatch>();
@@ -30,7 +31,19 @@ export function HomeScreen() {
           <TextInputComponent setTextInput={() => {}} />
         </View>
       </ImageBackground>
-      <FlatList data={questions} renderItem={() => <Text>item</Text>} />
+      <View style={styles.contentBody}>
+        <FlatList
+          style={styles.questionList}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          data={questions}
+          renderItem={({item}) => (
+            <View style={styles.listItemContainer}>
+              <QuestionCardComponent question={item} />
+            </View>
+          )}
+        />
+      </View>
       <Text>HomeScreen</Text>
     </>
   );
