@@ -9,6 +9,8 @@ import {DiagnoseScreen} from '../screens/DiagnoseScreen';
 import {MyGardenScreen} from '../screens/MyGardenScreen';
 import {ProfileScreen} from '../screens/ProfileScreen';
 import {BottomNavigatorComponent} from '../componenets/BottomNavigatorComponent';
+import {SafeAreaView} from 'react-native';
+import {constants} from '../utils/theme';
 
 export type StackParamList = {
   Home: undefined;
@@ -59,5 +61,13 @@ const BottomNavigator = memo(function BottomNavigator() {
 });
 
 export const MainNavigator = memo(function MainNavigator() {
-  return <BottomNavigator />;
+  return (
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: constants.colors.whiteColor,
+      }}>
+      <BottomNavigator />
+    </SafeAreaView>
+  );
 });
