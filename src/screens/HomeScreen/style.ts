@@ -26,12 +26,29 @@ export const styles = StyleSheet.create({
     color: constants.colors.mainTextColor,
   },
   contentBody: {
-    paddingHorizontal: RoundPixel(24),
+    flex: 1,
   },
-  questionList: {
-    flexGrow: 0,
+  categoryListWrapper: {
+    justifyContent: 'space-between',
+    marginHorizontal: RoundPixel(14),
   },
-  listItemContainer: {
+  questionListItemContainer: {
     marginRight: RoundPixel(10),
+  },
+  categoryListItemContainer: {
+    flex: 0.5,
+    marginHorizontal: RoundPixel(10),
+    marginBottom: RoundPixel(16),
+  },
+  categoryList: {
+    marginBottom: RoundPixel(24),
+  },
+  questionListContentContainer: {
+    marginHorizontal: RoundPixel(24),
+  },
+  categoryListItemSeparator: {
+    width: RoundPixel(16),
+    height: RoundPixel(16),
+    backgroundColor: 'red',
   },
 });
