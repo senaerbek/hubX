@@ -1,5 +1,11 @@
-import React, {useEffect} from 'react';
-import {FlatList, ImageBackground, View} from 'react-native';
+import React, {useCallback, useEffect} from 'react';
+import {
+  FlatList,
+  ImageBackground,
+  Linking,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {styles} from './style';
 import {AppText} from '../../componenets/AppText';
 import {TextInputComponent} from '../../componenets/TextInputComponent';
@@ -11,6 +17,7 @@ import {getCategories} from '../../api/services/category-service';
 import {CategoryCardComponent} from './CategoryCardComponent';
 import {Question} from '../../models/Question';
 import {CategoryData} from '../../models/Category';
+import {AdvertisementButton} from './AdvertisementButton';
 
 export function HomeScreen() {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,19 +28,27 @@ export function HomeScreen() {
     (state: RootState) => state.categories.categories,
   );
 
+  const onQuestionPress = useCallback(async (uri: string) => {
+    await Linking.openURL(uri);
+  }, []);
+
   const renderQuestion = ({item}: {item: Question}) => {
     return (
-      <View style={styles.questionListItemContainer}>
+      <TouchableOpacity
+        onPress={() => onQuestionPress(item.uri)}
+        style={styles.questionListItemContainer}>
         <QuestionCardComponent question={item} />
-      </View>
+      </TouchableOpacity>
     );
   };
 
   const renderCategory = ({item}: {item: CategoryData}) => {
     return (
-      <View style={styles.categoryListItemContainer}>
+      <TouchableOpacity
+        onPress={() => {}}
+        style={styles.categoryListItemContainer}>
         <CategoryCardComponent category={item} />
-      </View>
+      </TouchableOpacity>
     );
   };
 
@@ -64,14 +79,20 @@ export function HomeScreen() {
           renderItem={renderCategory}
           keyExtractor={item => item.id.toString()}
           ListHeaderComponent={
-            <FlatList
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.questionListContentContainer}
-              data={questions}
-              renderItem={renderQuestion}
-              keyExtractor={item => item.id.toString()}
-            />
+            <>
+              <View style={styles.advertisementContainer}>
+                <AdvertisementButton />
+              </View>
+              <AppText style={styles.startedTitle}>Get Started</AppText>
+              <FlatList
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.questionListContentContainer}
+                data={questions}
+                renderItem={renderQuestion}
+                keyExtractor={item => item.id.toString()}
+              />
+            </>
           }
           ListHeaderComponentStyle={styles.categoryList}
         />

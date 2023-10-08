@@ -10,6 +10,8 @@ export const styles = StyleSheet.create({
     backgroundColor: constants.colors.whiteColor,
     opacity: 0.88,
     borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#3C3C431A',
   },
   iconContainer: {
     flex: 1,

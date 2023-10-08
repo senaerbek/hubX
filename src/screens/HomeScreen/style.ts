@@ -51,4 +51,14 @@ export const styles = StyleSheet.create({
     height: RoundPixel(16),
     backgroundColor: 'red',
   },
+  advertisementContainer: {
+    margin: RoundPixel(24),
+  },
+  startedTitle: {
+    marginHorizontal: RoundPixel(24),
+    marginBottom: RoundPixel(16),
+    fontSize: RoundPixel(15),
+    fontWeight: '500',
+    color: constants.colors.mainTextColor,
+  },
 });
