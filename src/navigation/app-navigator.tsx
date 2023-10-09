@@ -6,6 +6,7 @@ import {MainNavigator} from './main-navigator';
 import {useSelector} from 'react-redux';
 import {RootState} from '../store';
 import {OnBoardingStackNavigator} from './onboarding-navigator';
+import {styles} from './style';
 
 const Stack = createStackNavigator();
 
@@ -15,10 +16,7 @@ export const AppNavigator = memo(function ApplicationNavigator() {
   );
 
   return (
-    <View
-      style={{
-        flex: 1,
-      }}>
+    <View style={styles.screenContainer}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         {navigate === 'OnBoard' ? (
           <Stack.Screen name="OnBoard" component={OnBoardingStackNavigator} />

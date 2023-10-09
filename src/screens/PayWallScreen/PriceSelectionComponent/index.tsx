@@ -3,9 +3,10 @@ import {View} from 'react-native';
 import {styles} from './style';
 import {AppText} from '../../../componenets/AppText';
 import {RadioButton} from '../../../componenets/RadioButtonComponent';
+import {Price} from '../../../models/Price';
 
 interface PriceSelectionComponentProps {
-  price: any;
+  price: Price;
   isSelected: boolean;
 }
 

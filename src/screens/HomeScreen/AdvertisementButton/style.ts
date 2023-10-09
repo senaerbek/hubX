@@ -3,10 +3,9 @@ import {RoundPixel} from '../../../utils/dimension';
 
 export const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    flexDirection: 'row',
     backgroundColor: '#24201A',
     height: RoundPixel(64),
-    flexDirection: 'row',
     borderRadius: RoundPixel(12),
   },
   advertisementIconContainer: {

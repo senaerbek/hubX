@@ -5,7 +5,7 @@ import {constants} from '../../utils/theme';
 export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: constants.colors.whiteColor,
     height: RoundPixel(50),
   },
   tab: {
@@ -31,29 +31,5 @@ export const styles = StyleSheet.create({
   },
   labelUnfocused: {
     color: constants.colors.grayColor,
-  },
-  scanIcon: {
-    tintColor: '#fff',
-    width: RoundPixel(25),
-    height: RoundPixel(25),
-  },
-  scanButton: {
-    height: RoundPixel(60),
-    width: RoundPixel(60),
-    backgroundColor: constants.colors.mainColor,
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  scanButtonOuter: {
-    height: RoundPixel(64),
-    width: RoundPixel(64),
-    position: 'absolute',
-    top: RoundPixel(-16),
-    backgroundColor: '#2CCC80',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 50,
-    zIndex: 1,
   },
 });

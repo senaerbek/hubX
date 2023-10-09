@@ -5,13 +5,8 @@ import {
   TabNavigationState,
 } from '@react-navigation/native';
 import React from 'react';
-import {
-  Image,
-  ImageSourcePropType,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {ScanButton} from '../ScanButtonComponent';
 import {styles} from './style';
 
 const BottomTabs = {
@@ -89,21 +84,5 @@ export function BottomNavigatorComponent(props: BottomNavigatorComponentProps) {
         );
       })}
     </View>
-  );
-}
-
-function ScanButton({
-  icon,
-  onPress,
-}: {
-  icon: ImageSourcePropType;
-  onPress: () => void;
-}) {
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.scanButtonOuter}>
-      <View style={styles.scanButton}>
-        <Image source={icon} style={[styles.scanIcon]} />
-      </View>
-    </TouchableOpacity>
   );
 }

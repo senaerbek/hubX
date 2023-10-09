@@ -21,12 +21,8 @@ import {AdvertisementButton} from './AdvertisementButton';
 
 export function HomeScreen() {
   const dispatch = useDispatch<AppDispatch>();
-  const questions = useSelector(
-    (state: RootState) => state.questions.questions,
-  );
-  const categories = useSelector(
-    (state: RootState) => state.categories.categories,
-  );
+  const questions = useSelector((state: RootState) => state.questions);
+  const categories = useSelector((state: RootState) => state.categories);
 
   const onQuestionPress = useCallback(async (uri: string) => {
     await Linking.openURL(uri);
@@ -58,7 +54,7 @@ export function HomeScreen() {
   }, [dispatch]);
 
   return (
-    <>
+    <View style={styles.container}>
       <ImageBackground
         source={require('./images/header.png')}
         style={styles.headerContainer}>
@@ -70,33 +66,31 @@ export function HomeScreen() {
           <TextInputComponent setTextInput={() => {}} />
         </View>
       </ImageBackground>
-      <View style={styles.contentBody}>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          numColumns={2}
-          columnWrapperStyle={styles.categoryListWrapper}
-          data={categories.data}
-          renderItem={renderCategory}
-          keyExtractor={item => item.id.toString()}
-          ListHeaderComponent={
-            <>
-              <View style={styles.advertisementContainer}>
-                <AdvertisementButton />
-              </View>
-              <AppText style={styles.startedTitle}>Get Started</AppText>
-              <FlatList
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={styles.questionListContentContainer}
-                data={questions}
-                renderItem={renderQuestion}
-                keyExtractor={item => item.id.toString()}
-              />
-            </>
-          }
-          ListHeaderComponentStyle={styles.categoryList}
-        />
-      </View>
-    </>
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        numColumns={2}
+        columnWrapperStyle={styles.categoryListWrapper}
+        data={categories.categories.data}
+        renderItem={renderCategory}
+        keyExtractor={item => item.id.toString()}
+        ListHeaderComponent={
+          <>
+            <View style={styles.advertisementContainer}>
+              <AdvertisementButton />
+            </View>
+            <AppText style={styles.startedTitle}>Get Started</AppText>
+            <FlatList
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.questionListContentContainer}
+              data={questions.questions}
+              renderItem={renderQuestion}
+              keyExtractor={item => item.id.toString()}
+            />
+          </>
+        }
+        ListHeaderComponentStyle={styles.categoryListHeader}
+      />
+    </View>
   );
 }

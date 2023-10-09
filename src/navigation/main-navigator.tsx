@@ -10,7 +10,7 @@ import {MyGardenScreen} from '../screens/MyGardenScreen';
 import {ProfileScreen} from '../screens/ProfileScreen';
 import {BottomNavigatorComponent} from '../componenets/BottomNavigatorComponent';
 import {SafeAreaView} from 'react-native';
-import {constants} from '../utils/theme';
+import {styles} from './style';
 
 export type StackParamList = {
   Home: undefined;
@@ -62,11 +62,7 @@ const BottomNavigator = memo(function BottomNavigator() {
 
 export const MainNavigator = memo(function MainNavigator() {
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: constants.colors.whiteColor,
-      }}>
+    <SafeAreaView style={styles.screenContainer}>
       <BottomNavigator />
     </SafeAreaView>
   );

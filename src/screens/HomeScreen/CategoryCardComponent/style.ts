@@ -4,7 +4,6 @@ import {constants} from '../../../utils/theme';
 
 export const styles = StyleSheet.create({
   container: {
-    width: '100%',
     height: RoundPixel(152),
     backgroundColor: constants.colors.whiteColor,
     borderWidth: 0.5,

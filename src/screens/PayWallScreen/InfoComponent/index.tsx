@@ -2,8 +2,14 @@ import {Image, View} from 'react-native';
 import {styles} from './style';
 import {AppText} from '../../../componenets/AppText';
 import React from 'react';
+import {PremiumInfo} from '../../../models/PremiumInfo';
 
-export function PayWallInfoComponent({info}: any) {
+interface PayWallInfoComponentProps {
+  info: PremiumInfo;
+}
+export function PayWallInfoComponent(props: PayWallInfoComponentProps) {
+  const {info} = props;
+
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>

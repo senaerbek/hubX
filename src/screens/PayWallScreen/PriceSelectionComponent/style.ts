@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.05)',
     height: RoundPixel(60),
     borderRadius: RoundPixel(14),
-    width: '100%',
     borderColor: 'rgba(255, 255, 255, 0.3)',
     flexDirection: 'row',
   },

@@ -10,6 +10,22 @@ export const styles = StyleSheet.create({
     backgroundColor: '#101E17',
     justifyContent: 'flex-end',
   },
+  closeIconContainer: {
+    width: RoundPixel(24),
+    height: RoundPixel(24),
+    backgroundColor: constants.colors.blackColor,
+    position: 'absolute',
+    top: RoundPixel(46),
+    right: RoundPixel(16),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: RoundPixel(12),
+  },
+  closeIcon: {
+    width: RoundPixel(24),
+    height: RoundPixel(24),
+    opacity: 1,
+  },
   body: {
     marginHorizontal: RoundPixel(24),
     marginBottom: RoundPixel(24),

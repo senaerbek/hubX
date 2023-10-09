@@ -3,6 +3,10 @@ import {RoundPixel} from '../../utils/dimension';
 import {constants} from '../../utils/theme';
 
 export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: constants.colors.backgroundColor,
+  },
   headerContainer: {
     width: '100%',
     height: RoundPixel(140),
@@ -25,9 +29,6 @@ export const styles = StyleSheet.create({
     marginTop: RoundPixel(6),
     color: constants.colors.mainTextColor,
   },
-  contentBody: {
-    flex: 1,
-  },
   categoryListWrapper: {
     justifyContent: 'space-between',
     marginHorizontal: RoundPixel(14),
@@ -40,16 +41,11 @@ export const styles = StyleSheet.create({
     marginHorizontal: RoundPixel(10),
     marginBottom: RoundPixel(16),
   },
-  categoryList: {
+  categoryListHeader: {
     marginBottom: RoundPixel(24),
   },
   questionListContentContainer: {
     marginHorizontal: RoundPixel(24),
-  },
-  categoryListItemSeparator: {
-    width: RoundPixel(16),
-    height: RoundPixel(16),
-    backgroundColor: 'red',
   },
   advertisementContainer: {
     margin: RoundPixel(24),

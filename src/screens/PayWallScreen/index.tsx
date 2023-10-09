@@ -1,12 +1,23 @@
 import React, {useCallback} from 'react';
-import {FlatList, ImageBackground, TouchableOpacity, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  ImageBackground,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {styles} from './style';
 import {AppText} from '../../componenets/AppText';
 import {PayWallInfoComponent} from './InfoComponent';
 import {PriceSelectionComponent} from './PriceSelectionComponent';
 import {ButtonComponent} from '../../componenets/ButtonComponent';
+import {useDispatch} from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {changeStackNavigation} from '../../store/navigate/navigateSlice';
+import {Price} from '../../models/Price';
+import {PremiumInfo} from '../../models/PremiumInfo';
 
-const infoList = [
+const premiumInfoList: PremiumInfo[] = [
   {
     icon: require('./images/scanner.png'),
     title: 'Unlimited',
@@ -24,7 +35,7 @@ const infoList = [
   },
 ];
 
-const priceList = [
+const priceList: Price[] = [
   {
     id: 1,
     price: '$9.99',
@@ -38,16 +49,54 @@ const priceList = [
 ];
 
 export function PayWallScreen() {
+  const dispatch = useDispatch();
   const [selectedPrice, setSelectedPrice] = React.useState(priceList[0]);
 
-  const selectPrice = useCallback(price => {
+  const navigateToHome = useCallback(() => {
+    AsyncStorage.setItem('isOnBoardingDone', 'true').then(() => {
+      dispatch(changeStackNavigation({switchNavigationRoute: 'Main'}));
+    });
+  }, [dispatch]);
+
+  const selectPrice = useCallback((price: Price) => {
     setSelectedPrice(price);
   }, []);
+
+  const renderPayWallInfoComponent = ({item}: {item: PremiumInfo}) => {
+    return (
+      <View style={styles.infoListContainer}>
+        <PayWallInfoComponent info={item} />
+      </View>
+    );
+  };
+
+  const renderPriceSelectionComponent = ({item}: {item: Price}) => {
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          selectPrice(item);
+        }}
+        style={styles.priceListContainer}>
+        <PriceSelectionComponent
+          price={item}
+          isSelected={selectedPrice.id === item.id}
+        />
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <ImageBackground
       source={require('./images/background.png')}
       style={styles.imageBackground}>
+      <TouchableOpacity
+        onPress={navigateToHome}
+        style={styles.closeIconContainer}>
+        <Image
+          style={styles.closeIcon}
+          source={require('./images/close-icon.png')}
+        />
+      </TouchableOpacity>
       <View style={styles.body}>
         <AppText style={styles.title}>
           <AppText style={styles.titleInner}>PlantApp</AppText> Premium
@@ -56,28 +105,15 @@ export function PayWallScreen() {
         <FlatList
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          data={infoList}
-          renderItem={({item}) => (
-            <View style={styles.infoListContainer}>
-              <PayWallInfoComponent info={item} />
-            </View>
-          )}
+          data={premiumInfoList}
+          renderItem={renderPayWallInfoComponent}
+          keyExtractor={(item, index) => index.toString()}
         />
         <FlatList
           scrollEnabled={false}
           data={priceList}
-          renderItem={({item}) => (
-            <TouchableOpacity
-              onPress={() => {
-                selectPrice(item);
-              }}
-              style={styles.priceListContainer}>
-              <PriceSelectionComponent
-                price={item}
-                isSelected={selectedPrice.id === item.id}
-              />
-            </TouchableOpacity>
-          )}
+          renderItem={renderPriceSelectionComponent}
+          keyExtractor={(item, index) => index.toString()}
         />
         <ButtonComponent text={'Try free For 3 days'} onPress={() => {}} />
         <AppText style={styles.bottomText}>

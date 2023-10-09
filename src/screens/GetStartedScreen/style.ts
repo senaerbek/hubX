@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   titleContainer: {
-    fontWeight: '400',
     marginTop: RoundPixel(12),
     paddingHorizontal: RoundPixel(24),
   },
