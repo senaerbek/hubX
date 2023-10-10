@@ -10,6 +10,7 @@ const fontList = [
   {propWeight: '800', family: 'Rubik-ExtraBold'},
   {propWeight: '900', family: 'Rubik-Black'},
 ];
+
 export function AppText(props: TextProps) {
   const fontFamily = useMemo(() => {
     return fontList.find(item => item.propWeight === props.style?.fontWeight)
