@@ -16,6 +16,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {changeStackNavigation} from '../../store/navigate/navigateSlice';
 import {Price} from '../../models/Price';
 import {PremiumInfo} from '../../models/PremiumInfo';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {RoundPixel} from '../../utils/dimension';
 
 const premiumInfoList: PremiumInfo[] = [
   {
@@ -51,6 +53,7 @@ const priceList: Price[] = [
 export function PayWallScreen() {
   const dispatch = useDispatch();
   const [selectedPrice, setSelectedPrice] = React.useState(priceList[0]);
+  const {top} = useSafeAreaInsets();
 
   const navigateToHome = useCallback(() => {
     AsyncStorage.setItem('isOnBoardingDone', 'true').then(() => {
@@ -91,7 +94,12 @@ export function PayWallScreen() {
       style={styles.imageBackground}>
       <TouchableOpacity
         onPress={navigateToHome}
-        style={styles.closeIconContainer}>
+        style={[
+          styles.closeIconContainer,
+          {
+            top: top + RoundPixel(8),
+          },
+        ]}>
         <Image
           style={styles.closeIcon}
           source={require('./images/close-icon.png')}
@@ -115,7 +123,10 @@ export function PayWallScreen() {
           renderItem={renderPriceSelectionComponent}
           keyExtractor={(item, index) => index.toString()}
         />
-        <ButtonComponent text={'Try free For 3 days'} onPress={() => {}} />
+        <ButtonComponent
+          text={'Try free For 3 days'}
+          onPress={navigateToHome}
+        />
         <AppText style={styles.bottomText}>
           After the 3-day free trial period you’ll be charged ₺274.99 per year
           unless you cancel before the trial expires. Yearly Subscription is

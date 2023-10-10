@@ -2,7 +2,11 @@ import {View} from 'react-native';
 import {styles} from './style';
 import React from 'react';
 
-export function RadioButton(props: any) {
+interface RadioButtonProps {
+  isSelected: boolean;
+}
+
+export function RadioButton(props: RadioButtonProps) {
   const {isSelected} = props;
 
   return (

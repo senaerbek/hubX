@@ -59,6 +59,7 @@ const tabList = [
     ],
   },
 ];
+
 export function OnBoardingScreen() {
   const scrollRef = useRef<FlatList>(null);
   const navigation = useNavigation<StackNavigationProp<OnBoardingStackList>>();

@@ -3,7 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 const navigateSlice = createSlice({
   name: 'navigate',
   initialState: {
-    switchNavigationRoute: 'Splash',
+    switchNavigationRoute: 'OnBoard',
   },
   reducers: {
     changeStackNavigation: (state, action) => {

@@ -15,7 +15,6 @@ export const styles = StyleSheet.create({
     height: RoundPixel(24),
     backgroundColor: constants.colors.blackColor,
     position: 'absolute',
-    top: RoundPixel(46),
     right: RoundPixel(16),
     justifyContent: 'center',
     alignItems: 'center',

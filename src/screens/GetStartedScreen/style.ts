@@ -11,6 +11,12 @@ export const styles = StyleSheet.create({
     marginTop: RoundPixel(12),
     paddingHorizontal: RoundPixel(24),
   },
+  title: {
+    fontWeight: '400',
+    fontSize: RoundPixel(28),
+    marginBottom: RoundPixel(8),
+    color: constants.colors.mainTextColor,
+  },
   titleInner: {
     fontWeight: '600',
   },
@@ -28,12 +34,6 @@ export const styles = StyleSheet.create({
     width: RoundPixel(375),
     height: RoundPixel(499),
     marginTop: RoundPixel(24),
-  },
-  title: {
-    fontWeight: '400',
-    fontSize: RoundPixel(28),
-    marginBottom: RoundPixel(8),
-    color: constants.colors.mainTextColor,
   },
   buttonContainer: {
     paddingHorizontal: RoundPixel(24),
